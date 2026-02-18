@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cotizador SH Diseño</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container" role="application" aria-label="Cotizador de sitios web SH Diseño">
+    <div class="top">
+      <div class="logo" aria-hidden="true">
+        <img src="https://shweb.com.ar/wp-content/uploads/2025/12/logo-por-separado.png" alt="SH Diseño">
+      </div>
+      <div>
+        <button class="recotizar" onclick="resetAll()" title="Volver a cotizar">Recotizar</button>
+      </div>
+    </div>
+
+    <h1>Cotizador de Sitios Web</h1>
+    <p class="lead">Avanzá por los pasos y obtené un precio estimado. El valor final se ajusta en la reunión.</p>
+
+    <div class="progress" aria-hidden="true">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step active" id="step1">
+      <div class="field">
+        <label class="field-label">Paso 1 — Tipo de sitio</label>
+        <select id="tipoSitio" aria-label="Tipo de sitio">
+          <option value="Landing" data-precio="250000">Landing Page — $250.000</option>
+          <option value="Corporativo" data-precio="350000">Corporativo — $350.000</option>
+          <option value="Ecommerce" data-precio="500000">E-commerce — $500.000</option>
+          <option value="Personalizado" data-precio="500000">Personalizado — $500.000</option>
+        </select>
+        <p class="note">El precio base cambia según el tipo de sitio seleccionado.</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn secondary" onclick="prevStep()" disabled>Anterior</button>
+        <button class="btn primary" onclick="nextStep()">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step" id="step2">
+      <div class="field">
+        <label class="field-label">Paso 2 — Funcionalidades adicionales (cada una tiene su precio)</label>
+        <div class="checkbox-group" id="extrasGroup" role="group" aria-label="Funcionalidades">
+          <label><input type="checkbox" value="Chat WhatsApp" data-precio="80000"> Chat WhatsApp</label>
+          <label><input type="checkbox" value="Formulario de contacto" data-precio="80000"> Formulario de contacto</label>
+          <label><input type="checkbox" value="Blog" data-precio="80000"> Blog</label>
+          <label><input type="checkbox" value="Multilenguaje" data-precio="80000"> Multilenguaje</label>
+          <label><input type="checkbox" value="SEO inicial" data-precio="80000"> SEO inicial</label>
+          <label><input type="checkbox" value="Hosting y mantenimiento" data-precio="80000"> Hosting y mantenimiento</label>
+          <label><input type="checkbox" value="Galería de imágenes" data-precio="80000"> Galería de imágenes</label>
+          <label><input type="checkbox" value="Google Maps" data-precio="80000"> Integración Google Maps</label>
+        </div>
+        <p class="note">En caso de no necesitar dejar desmarcados</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn secondary" onclick="prevStep()">Anterior</button>
+        <button class="btn primary" onclick="nextStep()">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step" id="step3">
+      <div class="field">
+        <label class="field-label">Paso 3 — Diseño (obligatorio)</label>
+        <div class="radio-group" role="radiogroup" aria-label="Tipo de diseño">
+          <label><input type="radio" name="diseno" value="Basico"> Diseño básico (plantilla) — <strong>- $50.000</strong></label>
+          <label><input type="radio" name="diseno" value="Personalizado"> Diseño personalizado — sin descuento</label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn secondary" onclick="prevStep()">Anterior</button>
+        <button class="btn primary" onclick="nextStep()">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step" id="step4">
+      <div class="field">
+        <label class="field-label">Paso 4 — Tiempo de entrega (obligatorio)</label>
+        <select id="tiempoEntrega" aria-label="Tiempo de entrega">
+          <option value="">-- Elegir --</option>
+          <option value="Rápido">Rápido — 5 días hábiles (recargo + $50.000)</option>
+          <option value="Estándar">Estándar — 10 días hábiles</option>
+          <option value="Extendido">Extendido — 15–20 días hábiles</option>
+        </select>
+        <p class="note">El tiempo comienza a contar desde que el cliente entrega todos los requerimientos solicitados. Sujeto a revisión.</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn secondary" onclick="prevStep()">Anterior</button>
+        <button class="btn primary" onclick="nextStep()">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step" id="step5">
+      <div class="field">
+        <label class="field-label">Paso 5 — Resumen</label>
+        <div class="summary" id="resumen"></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn secondary" onclick="prevStep()">Anterior</button>
+        <button class="btn primary" onclick="nextStep()">Siguiente</button>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step" id="step6">
+      <div class="field">
+        <label class="field-label">Paso 6 — Precio final</label>
+        <div class="price" id="precioFinal"></div>
+        <p class="note">Este valor es estimado y puede ajustarse en la reunión con SH Diseño.</p>
+      </div>
+
+      <div class="actions" style="flex-direction:column; gap:10px;">
+        <a id="whatsappLink" style="width:100%; text-decoration:none;">
+          <button class="btn primary" style="width:100%;">Contactar por WhatsApp</button>
+        </a>
+        <button class="btn secondary" onclick="resetAll()" style="width:100%;">Recotizar</button>
+      </div>
+
+      <footer class="small">Podés volver atrás para ajustar las opciones.</footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
