@@ -100,7 +100,7 @@ function calcularPrecio(){
   document.getElementById('precioFinal').innerText = "Precio estimado: $" + total.toLocaleString();
 
   const mensaje = `Hola, quiero cotizar un sitio web de $${total.toLocaleString()} con estas características: Tipo: ${tipoSelect.value}; Extras: ${extras.length ? extras.join(', ') : 'Ninguno'}; Diseño: ${diseno}; Entrega: ${tiempo}.`;
-  const waNumber = "549XXXXXXXXXX"; // <-- reemplazá por tu número con código de país
+  const waNumber = "5491138876974"; // <-- reemplazá por tu número con código de país
   const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(mensaje);
   document.getElementById('whatsappLink').href = waUrl;
 }
@@ -122,3 +122,4 @@ showStep(currentStep);
 window.nextStep = nextStep;
 window.prevStep = prevStep;
 window.resetAll = resetAll;
+
