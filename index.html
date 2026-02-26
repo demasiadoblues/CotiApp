@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cotizador SH Diseño</title>
   <link rel="stylesheet" href="styles.css">
@@ -29,16 +29,12 @@
       <div class="field">
         <label class="field-label">Paso 1 — Tipo de sitio</label>
         <select id="tipoSitio" aria-label="Tipo de sitio">
-          <option value="Landing" data-precio="150000">Landing Page</option>
-          <option value="Corporativo" data-precio="300000">Corporativo</option>
-          <option value="Ecommerce" data-precio="400000">E-commerce</option>
-          <option value="Personalizado" data-precio="400000">Personalizado</option>
+          <option value="Landing" data-precio="240000">Landing Page — $240.000</option>
+          <option value="Corporativo" data-precio="340000">Corporativo — $340.000</option>
+          <option value="Ecommerce" data-precio="590000">E-commerce — $590.000</option>
+          <option value="Personalizado" data-precio="400000">Personalizado — $400.000</option>
         </select>
         <p class="note">El precio base cambia según el tipo de sitio seleccionado.</p>
-        <p class="note">Landing Page: Todo en una sola pagina.
-        <p class="note">Corporativo: Mas de una pagina(hasta 3).</p>
-        <p class="note">Ecommerce: Incluye 20 productos.Mas productos se cotizan aparte.</p>   
-        </p>
       </div>
 
       <div class="actions">
@@ -50,20 +46,74 @@
     <!-- STEP 2 -->
     <div class="step" id="step2">
       <div class="field">
-        <label class="field-label">Paso 2 — Funcionalidades </label>
-        <div class="checkbox-grid" id="extrasGroup" role="group" aria-label="Funcionalidades">
+        <label class="field-label">Paso 2 — Funcionalidades adicionales</label>
+        <p class="note">Estas funcionalidades aplican según el tipo de sitio. <strong>Recordá:</strong> ningún plan incluye hosting y mantenimiento anual por defecto; marcá "Hosting y mantenimiento" si querés incluirlo (valor sugerido).</p>
+
+        <!-- Personalizado: todas las opciones (todo libre por defecto) -->
+        <div class="checkbox-grid" id="extrasGroupPersonalizado" role="group" aria-label="Funcionalidades Personalizado" style="display:none;">
           <label><input type="checkbox" value="Chat WhatsApp" data-precio="50000"> Chat WhatsApp</label>
-          <label><input type="checkbox" value="Formulario de contacto" data-precio="50000"> Formulario de contacto</label>
+          <label><input type="checkbox" value="Formulario de contacto" data-precio="80000"> Formulario de contacto</label>
           <label><input type="checkbox" value="Blog" data-precio="80000"> Blog</label>
           <label><input type="checkbox" value="Multilenguaje" data-precio="50000"> Multilenguaje</label>
-          <label><input type="checkbox" value="SEO inicial" data-precio="50000"> SEO inicial</label>
-          <label><input type="checkbox" value="Hosting y mantenimiento" data-precio="80000"> Hosting y mantenimiento</label>
-          <label><input type="checkbox" value="Galería de imágenes" data-precio="100000"> Galería de imágenes</label>
-          <label><input type="checkbox" value="Google Maps" data-precio="50000"> Integración Google Maps</label>
-          <label><input type="checkbox" value="Compra y configuración de dominio" data-precio="25000"> Compra y configuración de dominio (tunegocio.com.ar)</label>
-          <label><input type="checkbox" value="Diseño de logo" data-precio="50000"> Diseño de logo</label>
+          <label><input type="checkbox" value="SEO inicial" data-precio="80000"> SEO inicial</label>
+          <label><input type="checkbox" value="Hosting y mantenimiento" data-precio="160000"> Hosting y mantenimiento</label>
+          <label><input type="checkbox" value="Galería de imágenes" data-precio="80000"> Galería de imágenes</label>
+          <label><input type="checkbox" value="Google Maps" data-precio="80000"> Integración Google Maps</label>
+          <label><input type="checkbox" value="Compra y configuración de dominio" data-precio="50000"> Compra y configuración de dominio (tunegocio.com.ar)</label>
+          <label><input type="checkbox" value="Diseño de logo" data-precio="100000"> Diseño de logo</label>
         </div>
-        <p class="note">En caso de no encontrar la funcionalidad se revisa en reunion.</p>
+
+        <!-- Landing: Chat, Formulario y SEO vienen incluidos (marcados y deshabilitados) -->
+        <div class="checkbox-grid" id="extrasGroupLanding" role="group" aria-label="Funcionalidades Landing" style="display:none;">
+          <label><input type="checkbox" value="Chat WhatsApp" data-precio="50000"> Chat WhatsApp</label>
+          <label><input type="checkbox" value="Formulario de contacto" data-precio="80000"> Formulario de contacto</label>
+          <label><input type="checkbox" value="SEO inicial" data-precio="80000"> SEO inicial</label>
+
+          <!-- Opcionales que se muestran para sumar -->
+          <label><input type="checkbox" value="Blog" data-precio="80000"> Blog</label>
+          <label><input type="checkbox" value="Multilenguaje" data-precio="50000"> Multilenguaje</label>
+          <label><input type="checkbox" value="Galería de imágenes" data-precio="80000"> Galería de imágenes</label>
+          <label><input type="checkbox" value="Google Maps" data-precio="80000"> Integración Google Maps</label>
+          <label><input type="checkbox" value="Compra y configuración de dominio" data-precio="50000"> Compra y configuración de dominio (tunegocio.com.ar)</label>
+          <label><input type="checkbox" value="Diseño de logo" data-precio="100000"> Diseño de logo</label>
+          <label><input type="checkbox" value="Hosting y mantenimiento" data-precio="160000"> Hosting y mantenimiento</label>
+          <p class="note included">Las casillas marcadas están incluidas en el diseño de Landing y no generan costo adicional.</p>
+        </div>
+
+        <!-- Corporativo: incluye Blog además de Chat/Form/SEO -->
+        <div class="checkbox-grid" id="extrasGroupCorporativo" role="group" aria-label="Funcionalidades Corporativo" style="display:none;">
+          <label><input type="checkbox" value="Chat WhatsApp" data-precio="50000"> Chat WhatsApp</label>
+          <label><input type="checkbox" value="Formulario de contacto" data-precio="80000"> Formulario de contacto</label>
+          <label><input type="checkbox" value="Blog" data-precio="80000"> Blog</label>
+          <label><input type="checkbox" value="SEO inicial" data-precio="80000"> SEO inicial</label>
+
+          <!-- Opcionales -->
+          <label><input type="checkbox" value="Multilenguaje" data-precio="50000"> Multilenguaje</label>
+          <label><input type="checkbox" value="Galería de imágenes" data-precio="80000"> Galería de imágenes</label>
+          <label><input type="checkbox" value="Google Maps" data-precio="80000"> Integración Google Maps</label>
+          <label><input type="checkbox" value="Compra y configuración de dominio" data-precio="50000"> Compra y configuración de dominio (tunegocio.com.ar)</label>
+          <label><input type="checkbox" value="Diseño de logo" data-precio="100000"> Diseño de logo</label>
+          <label><input type="checkbox" value="Hosting y mantenimiento" data-precio="160000"> Hosting y mantenimiento</label>
+          <p class="note included">Las casillas marcadas están incluidas en el diseño Corporativo y no generan costo adicional.</p>
+        </div>
+
+        <!-- Ecommerce: viene con Chat, Formulario y SEO; el resto opcional -->
+        <div class="checkbox-grid" id="extrasGroupEcommerce" role="group" aria-label="Funcionalidades Ecommerce" style="display:none;">
+          <label><input type="checkbox" value="Chat WhatsApp" data-precio="50000"> Chat WhatsApp</label>
+          <label><input type="checkbox" value="Formulario de contacto" data-precio="80000"> Formulario de contacto</label>
+          <label><input type="checkbox" value="SEO inicial" data-precio="80000"> SEO inicial</label>
+
+          <!-- Opcionales -->
+          <label><input type="checkbox" value="Blog" data-precio="80000"> Blog</label>
+          <label><input type="checkbox" value="Multilenguaje" data-precio="50000"> Multilenguaje</label>
+          <label><input type="checkbox" value="Galería de imágenes" data-precio="80000"> Galería de imágenes</label>
+          <label><input type="checkbox" value="Google Maps" data-precio="80000"> Integración Google Maps</label>
+          <label><input type="checkbox" value="Compra y configuración de dominio" data-precio="50000"> Compra y configuración de dominio (tunegocio.com.ar)</label>
+          <label><input type="checkbox" value="Diseño de logo" data-precio="100000"> Diseño de logo</label>
+          <label><input type="checkbox" value="Hosting y mantenimiento" data-precio="160000"> Hosting y mantenimiento</label>
+          <p class="note included">Las casillas marcadas están incluidas en el diseño Ecommerce y no generan costo adicional.</p>
+        </div>
+
       </div>
 
       <div class="actions">
@@ -77,10 +127,9 @@
       <div class="field">
         <label class="field-label">Paso 3 — Diseño (obligatorio)</label>
         <div class="radio-group" role="radiogroup" aria-label="Tipo de diseño">
-          <label><input type="radio" name="diseno" value="Basico"> Diseño básico (plantilla) — <strong>-$50.000</strong></label>
-          <label><input type="radio" name="diseno" value="Personalizado"> Diseño personalizado — sin descuento</label>
+          <label><input type="radio" name="diseno" value="Basico"> Diseño básico (plantilla)</label>
+          <label><input type="radio" name="diseno" value="Personalizado"> Diseño personalizado</label>
         </div>
-        <p class="note">Diseño basico:se respetan las estrucuturas y secciones clasicas(Cta,Nostros,servicios,contacto).</p>
       </div>
 
       <div class="actions">
@@ -95,9 +144,9 @@
         <label class="field-label">Paso 4 — Tiempo de entrega (obligatorio)</label>
         <select id="tiempoEntrega" aria-label="Tiempo de entrega">
           <option value="">-- Elegir --</option>
-          <option value="Rápido">Rápido — 5 días hábiles (recargo + $50.000)</option>
-          <option value="Estándar">Estándar — 10 días hábiles</option>
-          <option value="Extendido">Extendido — 15–20 días hábiles</option>
+          <option value="Rápido" data-precio="50000">Rápido — 5 días hábiles (recargo + $50.000)</option>
+          <option value="Estándar" data-precio="25000">Estándar — 10 días hábiles (recargo + $25.000)</option>
+          <option value="Extendido" data-precio="0">Extendido — 15–20 días hábiles</option>
         </select>
         <p class="note">El tiempo comienza a contar desde que el cliente entrega todos los requerimientos solicitados. Sujeto a revisión.</p>
       </div>
@@ -113,6 +162,7 @@
       <div class="field">
         <label class="field-label">Paso 5 — Resumen</label>
         <div class="summary" id="resumen"></div>
+        <p class="note">El resumen muestra las selecciones; los valores se muestran en el paso final.</p>
       </div>
 
       <div class="actions">
@@ -125,8 +175,9 @@
     <div class="step" id="step6">
       <div class="field">
         <label class="field-label">Paso 6 — Precio final</label>
-        <div class="price" id="precioFinal"></div>
-        <p class="note">Este valor es estimado y puede ajustarse en la reunión con SH Diseño.</p>
+
+        <div class="final-box" id="finalBox"></div>
+        <p class="note" id="renewalNote"></p>
       </div>
 
       <div class="actions" style="flex-direction:column; gap:10px;">
@@ -143,6 +194,9 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
 
 
 
